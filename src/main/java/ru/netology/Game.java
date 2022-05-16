@@ -2,6 +2,8 @@ package ru.netology;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Game {
 
@@ -9,18 +11,15 @@ public class Game {
 
   }
 
-  private Collection<Player> players = new ArrayList<Player>();
+  private Map<String, Player> players = new HashMap<>();
 
   private Player getPlayer(String playerName) {
-    for (Player pl : players) {
-      if (pl.getName() == playerName)
-        return pl;
-    }
-    return null;
+    return players.get(playerName);
   }
 
   public void register(Player player) {
-    players.add(player);
+    String playerName = player.getName();
+    players.put(playerName, player);
   }
 
   public int round(String playerName1, String playerName2) {
